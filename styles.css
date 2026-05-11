@@ -351,12 +351,49 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.contact-section {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.contact-section .section-heading {
+  margin-bottom: 0;
+}
+
+.contact-section .button {
+  flex: 0 0 auto;
+}
+
+.email-link {
+  color: var(--muted);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.email-link:hover {
+  color: var(--cobalt);
+}
+
 .site-footer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 18px;
   background: var(--charcoal);
   color: white;
+}
+
+.footer-title {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .footer-links {
@@ -381,6 +418,7 @@ p {
 
   .hero,
   .split-section,
+  .contact-section,
   .project-grid,
   .signal-grid {
     grid-template-columns: 1fr;
@@ -406,6 +444,11 @@ p {
 
   .project-card {
     min-height: auto;
+  }
+
+  .contact-section {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
 }
