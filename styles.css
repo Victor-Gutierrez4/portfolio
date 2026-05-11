@@ -213,6 +213,83 @@ p {
   font-size: 0.9rem;
 }
 
+.story-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(30px, 6vw, 80px);
+  padding: clamp(64px, 9vw, 110px) clamp(20px, 5vw, 72px);
+  background: var(--charcoal);
+  color: white;
+}
+
+.story-visual {
+  position: sticky;
+  top: 108px;
+  align-self: start;
+}
+
+.story-visual h2 {
+  max-width: 9ch;
+  color: white;
+}
+
+.story-panel {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  margin-top: 28px;
+  min-height: 230px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.story-stage {
+  display: block;
+  margin-bottom: 28px;
+  color: #8ee3bc;
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+.story-panel p,
+.story-step p {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.story-steps {
+  display: grid;
+  gap: 24px;
+}
+
+.story-step {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  min-height: 260px;
+  padding: clamp(24px, 4vw, 34px);
+  opacity: 0.62;
+  transition: border-color 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.story-step.is-active {
+  border-color: #8ee3bc;
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.story-step span {
+  display: block;
+  margin-bottom: 32px;
+  color: #8ee3bc;
+  font-weight: 800;
+}
+
+.story-step h3 {
+  max-width: 620px;
+  color: white;
+  font-size: 2rem;
+  line-height: 1.08;
+}
+
 .band {
   background: var(--surface);
   border-block: 1px solid var(--line);
@@ -421,6 +498,7 @@ p {
   }
 
   .hero,
+  .story-section,
   .split-section,
   .contact-section,
   .project-grid,
@@ -431,6 +509,14 @@ p {
   .hero {
     min-height: auto;
     padding-top: 46px;
+  }
+
+  .story-visual {
+    position: static;
+  }
+
+  .story-visual h2 {
+    max-width: none;
   }
 
   h1 {
@@ -471,6 +557,7 @@ p {
   }
 
   .hero,
+  .story-section,
   .band,
   .split-section,
   .site-footer {

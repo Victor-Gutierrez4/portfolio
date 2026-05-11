@@ -2,14 +2,17 @@
 
 Professional portfolio website for a final course assignment. The site presents an aspirational but believable direction toward AI product engineering, practical web products, and applied AI workflows.
 
+Live site: https://victor-gutierrez4.github.io/portfolio/
+
 ## Portfolio Structure
 
 The portfolio is organized around a simple professional story:
 
 - professional direction
+- scrollytelling story test
 - featured project proof
 - skills in progress
-- project process
+- contact
 - professional links
 
 ## Featured Projects
@@ -30,8 +33,12 @@ The site is designed to communicate:
 
 ## AI Workflow
 
-AI was used intentionally to support role research, portfolio positioning, writing revision, visual asset generation, and critique. Final decisions were revised around the course requirements and the professional direction of the site.
+AI was used intentionally to support role research, portfolio positioning, writing revision, visual asset generation, critique, and a small spec-driven scrollytelling test. Final decisions were revised around the course requirements and the professional direction of the site.
+
+## Scrollytelling Test
+
+The portfolio includes one small scrollytelling section. The spec is documented in `docs/scrollytelling-test-spec.md`, and the implementation uses the existing static site with a small JavaScript file for active-step highlighting.
 
 ## Publish
 
-This is a static site. It can be published with GitHub Pages by setting the repository Pages source to the main branch root.
+This is a static site published with GitHub Pages from the main branch root.
