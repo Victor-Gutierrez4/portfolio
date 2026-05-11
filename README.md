@@ -15,8 +15,8 @@ The portfolio follows the class design system tour:
 
 ## Featured Projects
 
-- SmartTrip AI: revised midterm project, presented as an AI-assisted travel planning product
-- System Health Dashboard: job technology project, presented as an operational web dashboard
+- Student Reality Lab: revised midterm project, presented as a clearer and more professional portfolio piece
+- SmartTrip AI: Assignment 2 job technology project, presented as an AI-assisted travel planning product
 
 ## AI Workflow
 
