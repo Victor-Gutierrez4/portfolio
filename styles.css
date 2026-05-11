@@ -363,8 +363,12 @@ p {
   margin-bottom: 0;
 }
 
-.contact-section .button {
+.contact-actions {
+  display: flex;
+  align-items: flex-start;
   flex: 0 0 auto;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .email-link {
@@ -449,6 +453,10 @@ p {
   .contact-section {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .contact-actions {
+    width: 100%;
   }
 
 }
