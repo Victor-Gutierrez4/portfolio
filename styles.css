@@ -355,10 +355,6 @@ p {
   background: #eaf1ee;
 }
 
-.looking .section-heading {
-  margin-bottom: 0;
-}
-
 .timeline {
   display: grid;
   gap: 0;
