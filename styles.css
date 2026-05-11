@@ -351,55 +351,12 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.workflow {
-  background: #eaf1ee;
-}
-
-.timeline {
-  display: grid;
-  gap: 0;
-  max-width: 1000px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: steps;
-}
-
-.timeline li {
-  counter-increment: steps;
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 24px;
-  padding: 24px 0;
-  border-top: 1px solid rgba(24, 32, 44, 0.18);
-}
-
-.timeline li::before {
-  content: "0" counter(steps);
-  color: var(--amber);
-  font-weight: 800;
-}
-
-.timeline strong {
-  font-size: 1.2rem;
-}
-
-.timeline span {
-  color: var(--muted);
-  line-height: 1.6;
-}
-
 .site-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 28px;
   background: var(--charcoal);
   color: white;
-}
-
-.site-footer p,
-.site-footer .eyebrow {
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .footer-links {
@@ -484,10 +441,6 @@ p {
 
   .project-card h3 {
     font-size: 2rem;
-  }
-
-  .timeline li {
-    grid-template-columns: 1fr;
   }
 
   .skills-grid {
