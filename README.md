@@ -2,16 +2,15 @@
 
 Professional portfolio website for a final course assignment. The site presents an aspirational but believable direction toward AI product engineering, practical web products, and applied AI workflows.
 
-## Course Framework Used
+## Portfolio Structure
 
-The portfolio follows the class design system tour:
+The portfolio is organized around a simple professional story:
 
-- Signal: a clear audience, problem, and promise
-- Archetype: focused, analytical, future-facing
-- Style: clean editorial technology portfolio
-- Proof: revised midterm project and job technology project
-- Build: one-page structure with visible project evidence
-- Publish: static files ready for GitHub Pages
+- professional direction
+- featured project proof
+- skills in progress
+- project process
+- professional links
 
 ## Featured Projects
 
