@@ -1,6 +1,6 @@
 # Victor Gutierrez Portfolio
 
-Professional portfolio website for a final course assignment. The site presents an aspirational but believable direction toward AI product engineering and applied AI work.
+Professional portfolio website for a final course assignment. The site presents an aspirational but believable direction toward AI product engineering, practical web products, and applied AI workflows.
 
 ## Course Framework Used
 
@@ -17,6 +17,17 @@ The portfolio follows the class design system tour:
 
 - Student Reality Lab: revised midterm project, presented as a clearer and more professional portfolio piece
 - SmartTrip AI: Assignment 2 job technology project, presented as an AI-assisted travel planning product
+
+## Portfolio Message
+
+The site is designed to communicate:
+
+- who I want to become: an emerging AI product engineer
+- what kind of work I want to do: useful web tools with clear interfaces and AI-supported workflows
+- what problems I want to help solve: confusing planning, learning, comparison, and decision tasks
+- what projects represent that direction: Student Reality Lab and SmartTrip AI
+- what tools and skills I am developing: frontend development, APIs, deployment, product thinking, and AI-assisted revision
+- why someone should take me seriously: live projects, repositories, revision notes, and a coherent professional focus
 
 ## AI Workflow
 
