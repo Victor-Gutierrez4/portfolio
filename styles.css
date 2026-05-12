@@ -202,7 +202,8 @@ p {
 }
 
 .hero-media img {
-  width: 75%;
+  width: 64%;
+  max-width: 560px;
   aspect-ratio: 5 / 4;
   object-fit: cover;
   border-radius: 8px;
