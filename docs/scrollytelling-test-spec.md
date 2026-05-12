@@ -8,10 +8,11 @@ Turn the main portfolio sections into a small scrollytelling slideshow without m
 
 The scrollytelling slides should explain four moves:
 
-1. Direction.
-2. Projects.
-3. Skills in progress.
-4. Contact me.
+1. Who I am.
+2. Direction.
+3. Projects.
+4. Skills in progress.
+5. Contact me.
 
 ## Acceptance Criteria
 

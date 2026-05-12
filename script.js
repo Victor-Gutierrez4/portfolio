@@ -1,5 +1,6 @@
 const scrollySlides = Array.from(document.querySelectorAll(".scrolly-slide"));
 const slideDots = Array.from(document.querySelectorAll(".slide-dot"));
+const navSlideLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
 
 let activeSlideIndex = 0;
 let isProgrammaticScroll = false;
@@ -72,6 +73,17 @@ updateActiveSlideFromScroll();
 
 slideDots.forEach((dot, index) => {
   dot.addEventListener("click", () => goToSlide(index));
+});
+
+navSlideLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const targetId = link.getAttribute("href")?.slice(1);
+    const targetIndex = scrollySlides.findIndex((slide) => slide.id === targetId);
+    if (targetIndex < 0) return;
+
+    event.preventDefault();
+    goToSlide(targetIndex);
+  });
 });
 
 document.addEventListener("keydown", (event) => {

@@ -107,7 +107,6 @@ a {
   grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
   gap: clamp(34px, 6vw, 82px);
   align-items: center;
-  min-height: calc(100vh - 78px);
 }
 
 .hero-copy {
