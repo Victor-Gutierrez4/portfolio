@@ -19,6 +19,8 @@ The scrollytelling section should explain four moves:
 - It uses the current visual style and stays simple/professional.
 - It has a sticky visual area on larger screens.
 - It still reads normally on mobile.
+- Space, ArrowDown, and PageDown advance the story when the section is visible.
+- Mobile tapping inside the story section advances to the next slide.
 - It does not replace the project cards, skills, or contact sections.
 - It includes a small script only for highlighting the active scroll step.
 - The README includes the hosted GitHub Pages link.
