@@ -3,6 +3,7 @@ const slideDots = Array.from(document.querySelectorAll(".slide-dot"));
 
 let activeSlideIndex = 0;
 let isProgrammaticScroll = false;
+let scrollFrame = 0;
 
 function setActiveSlide(index) {
   activeSlideIndex = Math.min(Math.max(index, 0), scrollySlides.length - 1);
@@ -49,26 +50,25 @@ function isScrollyVisible() {
   return first.top < window.innerHeight * 0.72 && last.bottom > window.innerHeight * 0.28;
 }
 
-if ("IntersectionObserver" in window && scrollySlides.length > 0) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      if (isProgrammaticScroll) return;
-
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-      if (!visible) return;
-      setActiveSlide(scrollySlides.indexOf(visible.target));
-    },
-    {
-      rootMargin: "-34% 0px -42% 0px",
-      threshold: [0.2, 0.45, 0.7],
-    },
-  );
-
-  scrollySlides.forEach((slide) => observer.observe(slide));
+function updateActiveSlideFromScroll() {
+  if (isProgrammaticScroll || scrollySlides.length === 0) return;
+  setActiveSlide(nearestSlideIndex());
 }
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (scrollFrame) return;
+
+    scrollFrame = window.requestAnimationFrame(() => {
+      updateActiveSlideFromScroll();
+      scrollFrame = 0;
+    });
+  },
+  { passive: true },
+);
+
+updateActiveSlideFromScroll();
 
 slideDots.forEach((dot, index) => {
   dot.addEventListener("click", () => goToSlide(index));
