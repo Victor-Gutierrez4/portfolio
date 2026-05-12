@@ -7,6 +7,10 @@ let isProgrammaticScroll = false;
 function setActiveSlide(index) {
   activeSlideIndex = Math.min(Math.max(index, 0), scrollySlides.length - 1);
 
+  scrollySlides.forEach((slide, slideIndex) => {
+    slide.classList.toggle("is-active", slideIndex === activeSlideIndex);
+  });
+
   slideDots.forEach((dot, dotIndex) => {
     dot.classList.toggle("is-active", dotIndex === activeSlideIndex);
   });
