@@ -197,7 +197,7 @@ p {
 .hero-media {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   margin: 0;
 }
 
