@@ -9,7 +9,7 @@ Live site: https://victor-gutierrez4.github.io/portfolio/
 The portfolio is organized around a simple professional story:
 
 - professional direction
-- scrollytelling story test
+- scrollytelling slide sections
 - featured project proof
 - skills in progress
 - contact
@@ -37,7 +37,7 @@ AI was used intentionally to support role research, portfolio positioning, writi
 
 ## Scrollytelling Test
 
-The portfolio includes one small scrollytelling section. The spec is documented in `docs/scrollytelling-test-spec.md`, and the implementation uses the existing static site with a small JavaScript file for active-step highlighting.
+The portfolio turns the main sections into a small scrollytelling slideshow: Direction, Projects, Skills in progress, and Contact me. The spec is documented in `docs/scrollytelling-test-spec.md`, and the implementation uses the existing static site with a small JavaScript file for smooth slide advancing and active-section highlighting.
 
 ## Publish
 

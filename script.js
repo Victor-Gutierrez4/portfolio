@@ -1,74 +1,95 @@
-const storySteps = Array.from(document.querySelectorAll(".story-step"));
-const storyTitle = document.querySelector("#story-visual-title");
-const storyText = document.querySelector("#story-visual-text");
-const storyStage = document.querySelector(".story-stage");
-const storySection = document.querySelector(".story-section");
+const scrollySlides = Array.from(document.querySelectorAll(".scrolly-slide"));
+const slideDots = Array.from(document.querySelectorAll(".slide-dot"));
 
-let activeStoryIndex = 0;
+let activeSlideIndex = 0;
+let isProgrammaticScroll = false;
 
-function setActiveStoryStep(step) {
-  if (!step) return;
+function setActiveSlide(index) {
+  activeSlideIndex = Math.min(Math.max(index, 0), scrollySlides.length - 1);
 
-  storySteps.forEach((item) => item.classList.toggle("is-active", item === step));
-  activeStoryIndex = Math.max(0, storySteps.indexOf(step));
-
-  if (storyTitle) storyTitle.textContent = step.dataset.title || "";
-  if (storyText) storyText.textContent = step.dataset.text || "";
-  if (storyStage) storyStage.textContent = step.dataset.stage || "";
+  slideDots.forEach((dot, dotIndex) => {
+    dot.classList.toggle("is-active", dotIndex === activeSlideIndex);
+  });
 }
 
-function moveStory(direction = 1) {
-  if (storySteps.length === 0) return;
+function nearestSlideIndex() {
+  const viewportAnchor = window.innerHeight * 0.38;
 
-  const nextIndex = Math.min(Math.max(activeStoryIndex + direction, 0), storySteps.length - 1);
-  const nextStep = storySteps[nextIndex];
-  setActiveStoryStep(nextStep);
-  nextStep.scrollIntoView({ behavior: "smooth", block: "center" });
+  return scrollySlides.reduce((closestIndex, slide, index) => {
+    const currentDistance = Math.abs(slide.getBoundingClientRect().top - viewportAnchor);
+    const closestDistance = Math.abs(scrollySlides[closestIndex].getBoundingClientRect().top - viewportAnchor);
+    return currentDistance < closestDistance ? index : closestIndex;
+  }, 0);
 }
 
-function isStoryVisible() {
-  if (!storySection) return false;
+function goToSlide(index) {
+  if (scrollySlides.length === 0 || isProgrammaticScroll) return;
 
-  const rect = storySection.getBoundingClientRect();
-  return rect.top < window.innerHeight * 0.72 && rect.bottom > window.innerHeight * 0.28;
+  const nextIndex = Math.min(Math.max(index, 0), scrollySlides.length - 1);
+  const nextSlide = scrollySlides[nextIndex];
+
+  isProgrammaticScroll = true;
+  setActiveSlide(nextIndex);
+  nextSlide.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  window.setTimeout(() => {
+    isProgrammaticScroll = false;
+  }, 800);
 }
 
-if ("IntersectionObserver" in window && storySteps.length > 0) {
+function isScrollyVisible() {
+  if (scrollySlides.length === 0) return false;
+
+  const first = scrollySlides[0].getBoundingClientRect();
+  const last = scrollySlides[scrollySlides.length - 1].getBoundingClientRect();
+  return first.top < window.innerHeight * 0.72 && last.bottom > window.innerHeight * 0.28;
+}
+
+if ("IntersectionObserver" in window && scrollySlides.length > 0) {
   const observer = new IntersectionObserver(
     (entries) => {
+      if (isProgrammaticScroll) return;
+
       const visible = entries
         .filter((entry) => entry.isIntersecting)
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-      if (visible) setActiveStoryStep(visible.target);
+      if (!visible) return;
+      setActiveSlide(scrollySlides.indexOf(visible.target));
     },
     {
-      rootMargin: "-30% 0px -35% 0px",
-      threshold: [0.25, 0.5, 0.75],
+      rootMargin: "-34% 0px -42% 0px",
+      threshold: [0.2, 0.45, 0.7],
     },
   );
 
-  storySteps.forEach((step) => observer.observe(step));
+  scrollySlides.forEach((slide) => observer.observe(slide));
 }
+
+slideDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => goToSlide(index));
+});
 
 document.addEventListener("keydown", (event) => {
   const activeTag = document.activeElement?.tagName?.toLowerCase();
   const isTyping = activeTag === "input" || activeTag === "textarea";
-  if (isTyping || storySteps.length === 0 || !isStoryVisible()) return;
+  if (isTyping || scrollySlides.length === 0 || !isScrollyVisible()) return;
 
   if (event.key === " " || event.key === "ArrowDown" || event.key === "PageDown") {
     event.preventDefault();
-    moveStory(1);
+    goToSlide(nearestSlideIndex() + 1);
   }
 
   if (event.key === "ArrowUp" || event.key === "PageUp") {
     event.preventDefault();
-    moveStory(-1);
+    goToSlide(nearestSlideIndex() - 1);
   }
 });
 
-storySection?.addEventListener("click", (event) => {
-  if (!window.matchMedia("(max-width: 900px)").matches) return;
-  if (event.target.closest("a, button")) return;
-  moveStory(1);
+scrollySlides.forEach((slide) => {
+  slide.addEventListener("click", (event) => {
+    if (!window.matchMedia("(max-width: 900px)").matches) return;
+    if (event.target.closest("a, button")) return;
+    goToSlide(nearestSlideIndex() + 1);
+  });
 });
